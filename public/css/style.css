@@ -1,0 +1,23 @@
+#homeActionButtons {
+    text-align: center;
+}
+.homeButton {
+    margin: 50px 60px 50px 60px;
+}
+#missingPeopleContainer {
+    margin-top: 200px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.missingPeopleItem {
+    margin: 10px;
+    width: 200px;
+    float: left;
+    background-color: #2b542c;
+}
+.missingPeopleItem img {
+    width: 100%;
+}
+.orderButtons {
+    margin: 20px;
+}
