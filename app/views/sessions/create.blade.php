@@ -1,17 +1,26 @@
 @extends('layouts.default')
 @section('content')
-  <h1>Login</h1>
-  {{ Form::open(['route' => 'sessions.store']) }}
-    <div>
-    {{ Form::label('email', 'Correo Electrónico:')}}
-    {{ Form::email('email') }}
-    </div>
+    <div class="col-md-4">
 
-    <div>
-      {{ Form::label('password', 'Contraseña:')}}
-      {{ Form::password('password') }}
-    </div>
 
-    <div>{{ Form::submit('Login') }}</div>
-  {{ Form::close() }}
+        <h4>Login</h4>
+        {{Form::open(['route'=>'sessions.store'])}}
+        <div class="form-group">
+            {{ Form::label('email','EmailAddress:')}}
+            {{ Form::email('email')}}
+            <script>
+                $('#email').addClass('form-control');
+            </script>
+        </div>
+        <div class="form-group">
+            {{ Form::label('password', 'Password:')}}
+            {{ Form::password('password') }}
+            <script>
+                $('#password').addClass('form-control');
+            </script>
+        </div>
+        {{ Form::submit('Login') }}
+        <button type="submit" class="btn btn-default">Submit</button>
+        {{Form::close() }}
+    </div>
 @stop

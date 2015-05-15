@@ -1,7 +1,9 @@
 /**
  * Created by jhtan on 12/2/14.
  */
-
+/**
+ * Edited by Cechus on 13/04/2015
+ */
 (function ($) {
     $(document).ready( function () {
 
@@ -23,7 +25,7 @@
     });
 
     // Order buttons.
-    $('#missingPeopleOderButtons').on('click', 'button', function () {
+    $('#missingPeopleOderButtons').on('click', 'a', function () {
         var sortByValue = $(this).attr('data-sort-by');
         $isotopeContainer.isotope({ sortBy: sortByValue});
     });
