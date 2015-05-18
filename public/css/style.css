@@ -20,16 +20,37 @@
 .logo{
     background: url(../images/logo.jpg) no-repeat;
 }
+
 /* --------------------------------
 
 Primary style
 
 -------------------------------- */
+*, *::after, *::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+html * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 body {
     font-size: 1.6rem;
     font-family: "Open Sans", sans-serif;
     color: #331d35;
     background-color: #e7e7e7;
+}
+
+a {
+    color: #41307c;
+    text-decoration: none;
 }
 
 /* --------------------------------
@@ -168,7 +189,7 @@ xtab-filter
     padding-left: 14px;
 }
 .cd-tab-filter a.selected {
-    background: #34495E;
+    background: #41307c;
     color: #ffffff;
 }
 .cd-tab-filter.is-open::after {
@@ -225,9 +246,9 @@ xtab-filter
     }
     .cd-tab-filter a.selected {
         background: transparent;
-        color: #1c364e;
+        color: #41307c;
         /* create border bottom using box-shadow property */
-        box-shadow: inset 0 -2px 0 #1c364e;
+        box-shadow: inset 0 -2px 0 #41307c;
     }
     .cd-tab-filter.is-open ul li {
         display: inline-block;
@@ -350,7 +371,7 @@ xfilter
     left: 0;
     height: 50px;
     width: 100%;
-    background-color: #34495E;
+    background-color: #41307c;
     z-index: 2;
 }
 .cd-filter form {
@@ -366,7 +387,7 @@ xfilter
     color: #ffffff;
     font-size: 1.3rem;
     text-align: center;
-    background: #1C364E;
+    background: #37296a;
     opacity: 0;
     -webkit-transition: opacity 0.3s;
     -moz-transition: opacity 0.3s;
@@ -408,6 +429,7 @@ xfilter
     text-indent: 100%;
     color: transparent;
     white-space: nowrap;
+    background: transparent url("../images/cd-icon-filter.svg") no-repeat center center;
     z-index: 3;
 }
 .cd-filter-trigger.filter-is-visible {
@@ -513,7 +535,7 @@ xcustom form elements
 .cd-filter-block select:focus {
     outline: none;
     background-color: #ffffff;
-    border-color: #1c364e;
+    border-color: #41307c;
 }
 .cd-filter-block input[type='search'] {
     /* custom style for the search element */
@@ -626,7 +648,7 @@ xcustom form elements
 .cd-filter-block input[type=radio]:checked + label::before,
 .cd-filter-block input[type=checkbox]:checked + label::before {
     border-color: #41307c;
-    background-color: #34495E;
+    background-color: #41307c;
 }
 .cd-filter-block input[type=radio]:checked + label::after,
 .cd-filter-block input[type=checkbox]:checked + label::after {
@@ -639,3 +661,5 @@ xcustom form elements
         display: none;
     }
 }
+
+

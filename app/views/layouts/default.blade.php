@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}"/>
     <link type="text/css" rel="stylesheet" href="{{asset('vendor/flat-ui/flat-ui.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{asset('css/reset.css')}}">
+    <script type="text/javascript" src="{{asset('vendor/jquery-2.1.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('vendor/flat-ui/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/styleScripts.js')}}"></script>
     <script type="text/javascript" src="{{asset('vendor/flat-ui/flat-ui.min.js')}}"></script>
@@ -79,6 +80,7 @@
             </div><!--/.navbar-collapse -->
         </div>
     </nav>
+
     @yield('content')
 </div>
 </body>
