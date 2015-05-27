@@ -35,10 +35,9 @@ class CreateLostTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('lost', function(Blueprint $table)
-		{
-      Schema::drop('users');
-		});
+
+      Schema::drop('lost');
+
 	}
 
 }

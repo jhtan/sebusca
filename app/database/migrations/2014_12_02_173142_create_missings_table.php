@@ -35,10 +35,9 @@ class CreateMissingsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('missings', function(Blueprint $table)
-		{
-      Schema::drop('users');
-		});
+
+      Schema::drop('missings');
+
 	}
 
 }
