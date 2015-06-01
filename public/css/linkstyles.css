@@ -1,0 +1,94 @@
+
+/* Grid */
+.grid___item {
+	z-index: 1;
+	position: relative;
+	text-align: center;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-transform: translate3d(0,0,0); /* Solves Safari bug because of SVG clipping mask */
+}
+
+/* Background colors */
+.color-4 { background: #2C3E50; border-radius: 6px 0px 0px 6px; }
+
+/* General link styles */
+.link {
+	outline: none;
+	text-decoration: none;
+	position: relative;
+	font-size: 1em;
+	line-height: ;
+	color: #609;
+	display: inline-block;
+}
+
+
+/* Kumya */
+.link--kumya {
+	font-family: 'consolas', sans-serif;
+	font-size: 1.5em;
+	overflow: hidden;
+	padding: 10px 10px 0;
+	line-height: 1;
+	color: #1abc9c;
+}
+
+.link--kumya:hover {
+	color: #1abc9c;
+}
+
+.link--kumya::after {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 10px;
+	right: 0;
+	z-index: -1;
+	background: #13202C;
+	-webkit-transform: translate3d(101%,0,0);
+	transform: translate3d(101%,0,0);
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+
+.link--kumya:hover::after {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.link--kumya span {
+	display: block;
+	position: relative;
+}
+
+.link--kumya span::before {
+	content: attr(data-letters);
+	position: absolute;
+	color: #ECF0F1;
+	left: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 0%;
+	-webkit-transition: width 0.5s;
+	transition: width 0.5s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+
+.link--kumya:hover span::before {
+	width: 100%;
+}
+
+
+@media screen and (max-width: 3	em) {
+	.link--kumya { font-size: 1.5em; }
+	
+}

@@ -2,26 +2,51 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="{{asset('css/reset.css')}}"/>
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}"/>
     <link type="text/css" rel="stylesheet" href="{{asset('vendor/flat-ui/flat-ui.css')}}">
-    <link type="text/css" rel="stylesheet" href="{{asset('css/reset.css')}}">
-    <script type="text/javascript" src="{{asset('vendor/jquery-2.1.1.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!--<script type="text/javascript" src="{{asset('vendor/jquery-2.1.1.min.js')}}"></script>-->
+    <script type="text/javascript" src="{{asset('vendor/flat-ui/jquery.min.js')}}"></script>
+    <!--<script type="text/javascript" src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>-->
     <script type="text/javascript" src="{{asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/styleScripts.js')}}"></script>
     <script type="text/javascript" src="{{asset('vendor/flat-ui/flat-ui.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/jquery.mixitup.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/application.js')}}"></script>
     <link type="text/css" rel="stylesheet" href="{{asset('css/style-new.css')}}">
     <link type="text/css" rel="stylesheet" href="{{asset('css/glyphicons.css')}}">
     <link type="text/css" rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{asset('css/linkstyles.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{asset('css/styleThum.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{asset('vendor/font-awesome-4.3.0/css/font-awesome.min.css')}}">
+    <style>
+        .navbar-form input,
+        .form-inline input {
+            width: auto;
+        }
 
+        header {
+            height: 280px;
+            background-color: #eee;
+        }
+
+        #nav.affix {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
 
 <!-- Begin Header -->
-<div class="container">
-    <nav class="navbar navbar-inverse navbar-lg navbar-embossed" role="navigation">
+<header class="masthead">
+    <div class="container">
+
+
+
+        <nav class="navbar navbar-inverse navbar-lg navbar-embossed" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-9">
@@ -30,7 +55,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand logo" href="#">Se Busca</a>
+                <div class=" navbar-brand grid___item color-4">
+                    <a class="link link--kumya" href="#"><span data-letters="Se Busca">Se Busca</span>
+                    </a>
+                </div>
             </div>
             <div class="navbar-collapse collapse" id="navbar-collapse-9">
                 @if(!Auth::check())
@@ -82,6 +110,5 @@
     </nav>
 
     @yield('content')
-</div>
 </body>
 </html>

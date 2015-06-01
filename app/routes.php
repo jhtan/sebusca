@@ -99,6 +99,7 @@ Route::get('/', function () {
   return View::make('home', ['lost' => $lost]);
 });
 
+
 Route::resource('users', 'UsersController');
 Route::resource('lost', 'MissingsController');
 

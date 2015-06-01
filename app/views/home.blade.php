@@ -5,7 +5,8 @@
                 <a href="javascript:void(0)" class="btn btn-primary btn-lg homeButton">Reportar Persona Vista</a>
                 <a href="javascript:void(0)" class="btn btn-primary btn-lg homeButton">Mapa de Desaparecidos</a>
         </div>
-    </div><!--end container-->
+    </div>
+    </header>
             <!--
       <div id="missingPeopleOderButtons1" class="col-md-6">
         <h3>Ordenar por:</h3>
@@ -32,9 +33,7 @@
                     <p>Unfoutunately, there are no users.</p>
                   @endif
                     </div>-->
-
-
-    <main class="cd-main-content container">
+    <main class="cd-main-content">
         <div class="cd-tab-filter-wrapper">
             <div class="cd-tab-filter" id="sorts">
                 <ul class="cd-filters">
@@ -52,94 +51,54 @@
             <!-- cd-tab-filter -->
         </div>
         <!-- cd-tab-filter-wrapper -->
+        <div class="container">
+            <div class="row">
+                <section class="grid_Thum">
+                    @if($lost->count())
+                        @foreach($lost as $lost_people)
 
-        <section class="cd-gallery gallery">
-            @if($lost->count())
-                @foreach($lost as $lost_people)
-                    <!--<li class="missingPeopleItem mix color-1 check1 radio2 option3" data-name="{{$lost_people->name}}" data-lastName="{{$lost_people->last_name}}" data-date="{{$lost_people->created_at}}">
-                  <img src="{{asset('images/walt_missing_poster.jpg')}}" alt="Image 1">
-              </li>-->
-                    <!--
-                  <a href="/lost/{{$lost_people->id}}">
-                      <div class="missingPeopleItem" data-name="{{$lost_people->name}}" data-lastName="{{$lost_people->last_name}}" data-date="{{$lost_people->created_at}}">
-                          <img src="{{asset('images/walt_missing_poster.jpg')}}">
-                      </div>
-                  </a>-->
+                            <a href="/lost/{{$lost_people->id}}" class="grid__item">
+                                <h2 class="title_Thum title--preview">{{$lost_people->name}} {{$lost_people->last_name}}</h2>
+                                <div class="loader"></div>
+                                <div class="category">Category<i class="fa fa-check"></i></div>
+                                <div class="meta meta--preview">
+                                    <img class="meta__avatar" src="{{asset('images/walt_missing_poster.jpg')}}" alt="{{$lost_people->id}}" />
+                                    <span class="meta__date"><i class="fa fa-calendar-o"></i> {{$lost_people->missing_since}}</span>
+                                    <span class="meta__reading-time"><i class="fa fa-clock-o"></i> 33  min lost</span>
+                                    <br>
+                                    <span class="meta__date"><i class="fa fa-arrows-v"></i> {{$lost_people->height}}</span>
+                                    <span class="meta__reading-time"><i class="fa fa-anchor"></i> {{$lost_people->weight}}</span>
+                                    <br>
+                                    <span class="meta__date"><i class="fa fa-eye"></i> {{$lost_people->eyes}}</span>
+                                    <span class="meta__reading-time"><i class="fa fa-phone"></i> {{$lost_people->contact_number}}</span>
+                                    <br>
 
+                                    <span class="meta__date"><i class="fa fa-building-o"></i> {{$lost_people->city_id}}</span>
+                                    <span class="meta__reading-time"><i class="fa fa-flag"></i> {{$lost_people->country_id}}</span>
+                                    <br>
+                                    @if($lost_people->sex=='femenino')
+                                        <span class="meta__date"><i class="fa fa-venus"></i> </span>
+                                    @else
+                                        <span class="meta__date"><i class="fa fa-mars"></i> </span>
+                                    @endif
 
+                                    <span class="meta__date"><i class="fa fa-mars"></i> </span>
+                                    <span class="meta__date"><i class="fa fa-mars"></i> </span>
+                                    <span class="meta__date"><i class="fa fa-mars"></i> </span>
+                                    <span class="meta__date"><i class="fa fa-mars"></i> </span>
 
-                    <div class="col-sm-6 col-md-4 people"  data-category="">
-                        <div class="thumbnail">
-                            <img src="{{asset('images/walt_missing_poster.jpg')}}" role="button" data-toggle="modal" data-target="#{{$lost_people->id}} " width="100%" alt="">
-                            <div class="caption">
-                                <h2 class="name">{{$lost_people->name}}</h2>
-                                <h5 class="last_name">{{$lost_people->last_name}} </h5>
-                                <h3 class="date">{{$lost_people->created_at}}</h3>
-                                <p>
-                                    <a role="button" class="btn btn-primary" href="#">Reportar vista</a>
-                                </p>
-                            </div>
-                            <!-- <div class="line r"></div> -->
-                        </div>
-                        <div id="{{$lost_people->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <span role="button" data-dismiss="modal" aria-label="labelClose" class="glyphicon glyphicon-remove close" style="color:#ff0000;"></span>
-                                        <h4 class="modal-title" id="myModalLabel">{{$lost_people->last_name}}</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h4>Artists: </h4>
-                                        <!--init popover-->
-                                        <h4>Popover in a modal</h4>
-                                        <p>This <a href="#" role="button" class="btn btn-default popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on click.</p>
-                                        <!--end popover-->
-                                        <h4>Cover:</h4>
-                                        <p>
-                                            <img src="{{asset('images/walt_missing_poster.jpg')}}" alt=" ">
-                                        </p>
-                                        <hr>
-                                        <h4>Genres: </h4>
-                                        <h4>Label: </h4>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#" role="button" class="btn btn-primary">More Details</a>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    </div>
                                 </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
-                    </div>
-                <!--
-                    <div class="col-sm-6 col-md-3">
-                        <div class="thumbnail peopleitem" data-name="{{$lost_people->name}}" data-lastName="{{$lost_people->last_name}}" data-date="{{$lost_people->created_at}}">
-                            <a href="/lost/{{$lost_people->id}}">
-                                <img src="{{asset('images/walt_missing_poster.jpg')}}"  alt=" />
-                          <div class="caption"></a>
-                            <h5>{{$lost_people->name}} {{$lost_people->last_name}} </h5>
-                            <p>{{$lost_people->name}} {{$lost_people->last_name}}
-                                {{$lost_people->document_number}}
-                                {{$lost_people->date_of_birth}}
-                                {{$lost_people->clothing}}
-                                {{$lost_people->nationality}}
-                                {{$lost_people->description}}
-                            </p>
-                            <p>
-                                <a role="button" class="btn btn-primary" href="#">Reportar vista</a>
-                            </p>
-                        </div>
+                            </a>
+                                <!--<div class="thumbnail peopleitem" data-name="{{$lost_people->name}}" data-lastName="{{$lost_people->last_name}}" data-date="{{$lost_people->created_at}}"><a href="/lost/{{$lost_people->id}}"></div>-->
+                         @endforeach
 
-                    </div>
-                        -->
-                @endforeach
-            @else
-                <p>NOOOOOOsoodosods</p>
-            @endif
-            <div class="cd-fail-message">No results found</div>
+                    @else
+                        <div class="cd-fail-message" style="display:block;">No se encontraron Datos</div>
+                    @endif
+                </section>
+            </div>
+        </div>
+
         </section> <!-- cd-gallery -->
 
         <div class="cd-filter">
@@ -234,7 +193,6 @@
             <a href="#0" class="cd-close">Close</a>
         </div>
         <!-- cd-filter -->
-        <a href="#0" class="cd-filter-trigger">Filters
-            </a>
+        <a href="#0" class="cd-filter-trigger">Filters</a>
     </main> <!-- cd-main-content -->
 @stop
