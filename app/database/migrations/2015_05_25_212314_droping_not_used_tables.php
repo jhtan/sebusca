@@ -13,8 +13,6 @@ class DropingNotUsedTables extends Migration {
 	public function up()
 	{
         Schema::drop('lost');
-        Schema::drop('missings');
-        Schema::drop('users2');
 	}
 
     /**
