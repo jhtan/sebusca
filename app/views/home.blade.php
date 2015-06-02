@@ -44,6 +44,8 @@
                     <li class="filter"><a class="selected" href="#0" data-sort-value="original-order">original order</a></li>
                     <li class="filter"><a href="#0" data-sort-value="name">Nombre</a></li>
                     <li class="filter"><a href="#0" data-sort-value="last_name">Apellido</a></li>
+                    <li class="filter"><a href="#0" data-sort-value="height">Height</a></li>
+                    <li class="filter"><a href="#0" data-sort-value="weight">Weight</a></li>
                     <li class="filter"><a href="#0" data-sort-value="date">Fecha</a></li>
                 </ul>
                 <!-- cd-filters -->
@@ -56,18 +58,17 @@
                 <section class="grid_Thum">
                     @if($lost->count())
                         @foreach($lost as $lost_people)
-
                             <a href="/lost/{{$lost_people->id}}" class="grid__item">
-                                <h2 class="title_Thum title--preview">{{$lost_people->name}} {{$lost_people->last_name}}</h2>
+                                <h2 class="title_Thum title--preview name">{{$lost_people->name}}&nbsp;<span class="last_name">{{$lost_people->last_name}}</span></h2>
                                 <div class="loader"></div>
-                                <div class="category">Category<i class="fa fa-check"></i></div>
+                                <div class="category">State <i class="fa fa-check"></i></div>
                                 <div class="meta meta--preview">
                                     <img class="meta__avatar" src="{{asset('images/walt_missing_poster.jpg')}}" alt="{{$lost_people->id}}" />
                                     <span class="meta__date"><i class="fa fa-calendar-o"></i> {{$lost_people->missing_since}}</span>
                                     <span class="meta__reading-time"><i class="fa fa-clock-o"></i> 33  min lost</span>
                                     <br>
-                                    <span class="meta__date"><i class="fa fa-arrows-v"></i> {{$lost_people->height}}</span>
-                                    <span class="meta__reading-time"><i class="fa fa-anchor"></i> {{$lost_people->weight}}</span>
+                                    <span class="meta__date"><i class="fa fa-arrows-v"></i> <span class="height">{{$lost_people->height}}</span></span>
+                                    <span class="meta__reading-time weight"><i class="fa fa-anchor"></i> {{$lost_people->weight}}</span>
                                     <br>
                                     <span class="meta__date"><i class="fa fa-eye"></i> {{$lost_people->eyes}}</span>
                                     <span class="meta__reading-time"><i class="fa fa-phone"></i> {{$lost_people->contact_number}}</span>

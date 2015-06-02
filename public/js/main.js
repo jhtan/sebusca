@@ -69,20 +69,6 @@ jQuery(document).ready(function($){
      http://codepen.io/patrickkunka/
      *************************************/
 
-    buttonFilter.init();
-    $('.cd-gallery ul').mixItUp({
-        controls: {
-            enable: false
-        },
-        callbacks: {
-            onMixStart: function(){
-                $('.cd-fail-message').fadeOut(200);
-            },
-            onMixFail: function(){
-                $('.cd-fail-message').fadeIn(200);
-            }
-        }
-    });
 
     //search filtering
     //credits http://codepen.io/edprats/pen/pzAdg

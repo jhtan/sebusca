@@ -11,12 +11,14 @@
      */
     //Implementation of the library.
 
-    var $container = $('.gallery').isotope({
-        itemSelector: '.people',
+    var $container = $('.grid_Thum').isotope({
+        itemSelector: '.grid__item',
         layoutMode:'fitRows',
         getSortData: {
             name: '.name',
             last_name: '.last_name',
+            height: '.height',
+            weight: '.weight',
             date: '.date'
         }
     });
