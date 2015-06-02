@@ -56,7 +56,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class=" navbar-brand grid___item color-4">
-                    <a class="link link--kumya" href="#"><span data-letters="Se Busca">Se Busca</span>
+                    <a class="link link--kumya" href="/"><span data-letters="Se Busca">Se Busca</span>
                     </a>
                 </div>
             </div>
