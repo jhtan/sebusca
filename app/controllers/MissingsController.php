@@ -31,18 +31,21 @@ class MissingsController extends \BaseController {
 	 */
 	public function store()
 	{
-    $lost = new Lost();
-    $lost->name = Input::get('name');
-    $lost->last_name = Input::get('last_name');
-    $lost->document_number = Input::get('document_number');
-    $lost->date_of_birth = Input::get('date_of_birth');
-    $lost->clothing = Input::get('clothing');
-    $lost->nationality = Input::get('nationality');
-    $lost->description = Input::get('description');
-    $lost->save();
+        $lost = new Lost();
+        $lost->name = Input::get('name');
+        $lost->last_name = Input::get('last_name');
+        $lost->document_number = Input::get('document_number');
+        $lost->date_of_birth = Input::get('date_of_birth');
+        $lost->clothing = Input::get('clothing');
+        $lost->nationality = Input::get('nationality');
+        $lost->description = Input::get('description');
+        $lost->city_id = 1;
+        $lost->country_id = 1;
+        $lost->user_id = Auth::id();
+        $lost->save();
 
-    $lost = Lost::all();
-    return View::make('home', ['lost' => $lost]);
+        $lost = Lost::all();
+        return View::make('home', ['lost' => $lost]);
 
     //    $user = new User;
 //    $user->username = Input::get('username');
