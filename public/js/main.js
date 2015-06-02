@@ -61,17 +61,7 @@ jQuery(document).ready(function($){
         ( scrollTop >= offsetTop ) ? $('.cd-main-content').addClass('is-fixed') : $('.cd-main-content').removeClass('is-fixed');
     }
 
-    /************************************
-     MitItUp filter settings
-     More details:
-     https://mixitup.kunkalabs.com/
-     or:
-     http://codepen.io/patrickkunka/
-     *************************************/
 
-
-    //search filtering
-    //credits http://codepen.io/edprats/pen/pzAdg
     var inputText;
     var $matching = $();
 

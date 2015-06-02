@@ -65,7 +65,7 @@
                                 <div class="meta meta--preview">
                                     <img class="meta__avatar" src="{{asset('images/walt_missing_poster.jpg')}}" alt="{{$lost_people->id}}" />
                                     <span class="meta__date"><i class="fa fa-calendar-o"></i> {{$lost_people->missing_since}}</span>
-                                    <span class="meta__reading-time"><i class="fa fa-clock-o"></i> 33  min lost</span>
+                                    <span class="meta__reading-time"><i class="fa fa-clock-o"></i> <span class="missing_time">33  min lost</span></span>
                                     <br>
                                     <span class="meta__date"><i class="fa fa-arrows-v"></i> <span class="height">{{$lost_people->height}}</span></span>
                                     <span class="meta__reading-time weight"><i class="fa fa-anchor"></i> {{$lost_people->weight}}</span>

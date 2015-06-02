@@ -60,7 +60,6 @@
                 filter: filterValue
             });
         });
-
         //for input filter search input
         var $quicksearch = $('#quicksearch').keyup(debounce(function() {
             qsRegex = new RegExp($quicksearch.val(), 'gi');
