@@ -20,6 +20,7 @@
         }
 
         .content {
+            width:500px;
             height: 860px;
             margin: 0 auto;
             text-align: center;
@@ -152,4 +153,6 @@
             </div>-->
         </div>
     </div>
+    <a href="/seenPeople/create?id={{$lost->id}}"><button class="btn btn-primary">Reportar Vista</button></a>
+    <a href="/seenPeople/show?id={{$lost->id}}"><button class="btn btn-primary">Ver reportes</button></a>
 @stop

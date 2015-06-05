@@ -13,7 +13,6 @@
             {{ Form::label('last_name', 'Apellidos:')}}
             {{ Form::input('text', 'last_name', null, array('class'=>'form-control')) }}
         </div>
-
         <div class="form-group">
             {{ Form::label('document_number', 'Número de documento:')}}
             {{ Form::input('text', 'document_number', null, array('class'=>'form-control')) }}
@@ -38,9 +37,7 @@
             {{ Form::label('description', 'Descripción:')}}
             {{ Form::input('text', 'description', null, array('class'=>'form-control')) }}
         </div>
-
         <div class="form-group">{{ Form::submit('Reportar', array('class'=>'btn btn-success')) }}</div>
-
         {{ Form::close() }}
     </div>
 @stop

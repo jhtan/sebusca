@@ -1,12 +1,13 @@
 <?php
 
-class MissingsController extends \BaseController {
+class SeenPeopleController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
+
 	public function index()
 	{
 		//
@@ -20,7 +21,7 @@ class MissingsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('lost.create');
+        return View::make('seenPeople.create');
 	}
 
 
@@ -31,27 +32,20 @@ class MissingsController extends \BaseController {
 	 */
 	public function store()
 	{
-        $lost = new Lost();
-        $lost->name = Input::get('name');
-        $lost->last_name = Input::get('last_name');
-        $lost->document_number = Input::get('document_number');
-        $lost->date_of_birth = Input::get('date_of_birth');
-        $lost->clothing = Input::get('clothing');
-        $lost->nationality = Input::get('nationality');
-        $lost->description = Input::get('description');
-        $lost->city_id = 1;
-        $lost->country_id = 1;
-        $lost->user_id = Auth::id();
-        $lost->save();
+
+        date_default_timezone_set('America/La_Paz');//revisar
+        $seen_people = new SeenPeople();
+        $seen_people->date=new DateTime('now');
+        $seen_people->user_id=Auth::id();
+        $seen_people->losts_id=Input::get('losts_id');
+        $seen_people->description=Input::get('description');
+        $seen_people->type=Input::get('type');
+        $seen_people->save();
 
         $lost = Lost::all();
         return View::make('home', ['lost' => $lost]);
 
-    //    $user = new User;
-//    $user->username = Input::get('username');
-//    $user->password = Hash::make(Input::get('password'));
-//    $user->save();
-//    $this->user->create($input);
+
 	}
 
 
@@ -61,9 +55,13 @@ class MissingsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)	{
-        $lost = Lost::find($id);
-        return View::make('lost.show', ['lost' => $lost]);
+	public function show()
+	{
+        $seen_people= SeenPeople::All();
+        $seen_people->sortByDesc('id');//or date
+        $user= User::All();
+        $lost=Lost::All();
+        return View::make('seenPeople.show', ['seenPeople' => $seen_people, 'user'=>$user,'lost'=>$lost]);
 	}
 
 

@@ -106,3 +106,5 @@ Route::get('admin', function () {
   return 'Admin Page';
 })->before('auth');
 
+Route::resource('seenPeople', 'SeenPeopleController' );
+

@@ -77,16 +77,14 @@
                                     <span class="meta__date"><i class="fa fa-building-o"></i> {{$lost_people->city_id}}</span>
                                     <span class="meta__reading-time"><i class="fa fa-flag"></i> {{$lost_people->country_id}}</span>
                                     <br>
-                                    @if($lost_people->sex=='femenino')
+                                    @if($lost_people->sex=='Femenino'or $lost_people->sex=='femenino')
                                         <span class="meta__date"><i class="fa fa-venus"></i> </span>
                                     @else
-                                        <span class="meta__date"><i class="fa fa-mars"></i> </span>
+                                        @if($lost_people->sex=='masculino' or $lost_people->sex=="Masculino")
+                                            <span class="meta__date"><i class="fa fa-mars"></i> </span>
+                                        @endif
                                     @endif
-
-                                    <span class="meta__date"><i class="fa fa-mars"></i> </span>
-                                    <span class="meta__date"><i class="fa fa-mars"></i> </span>
-                                    <span class="meta__date"><i class="fa fa-mars"></i> </span>
-                                    <span class="meta__date"><i class="fa fa-mars"></i> </span>
+                                    <hr/>
 
                                 </div>
                             </a>
