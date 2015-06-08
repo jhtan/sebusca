@@ -41,7 +41,6 @@ class SeenPeopleController extends \BaseController {
         $seen_people->description=Input::get('description');
         $seen_people->type=Input::get('type');
         $seen_people->save();
-
         $lost = Lost::all();
         return View::make('home', ['lost' => $lost]);
 

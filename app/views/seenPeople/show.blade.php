@@ -127,6 +127,17 @@
         <!-- Timeline -->
         <div class="timeline">
             <div class="line text-muted"></div>
+            <a href="/seenPeople/create?id={{$_GET['id']}}">
+            <article class="panel panel-default">
+                <div class="panel-heading icon">
+                    <i class="fa fa-plus"></i>
+                </div>
+                <div class="panel-body">
+                    Añadir nuevo reporte
+                </div>
+            </article>
+            </a>
+
             @foreach ($seenPeople as $reports)
                 @if($reports->losts_id==$_GET['id'])
                     <!--report-->
@@ -159,7 +170,7 @@
                             <i class="fa fa-picture-o"></i>
                         </div>
                         <div class="panel-body">
-                            <img src="photo.jpg" alt="photo{{$reports->id}}" class="img-responsive img-rounded">
+                            <img src="{{asset('images/photo.jpg')}}" alt="photo{{$reports->id}}" class="img-responsive img-rounded">
                         </div>
                     </article>
                     <!--/image Photos-->
@@ -169,7 +180,7 @@
                             <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="panel-body">
-                            <img src="map.jpg" alt="map{{$reports->id}}" class="img-responsive img-rounded">
+                            <img src="{{asset('images/map.jpg')}}" alt="map{{$reports->id}}" class="img-responsive img-rounded">
                         </div>
                     </article>
                     <!--/image Maps-->
