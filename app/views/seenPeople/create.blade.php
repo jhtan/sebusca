@@ -35,7 +35,7 @@
     </style>
 
     <h1>Reporte de Persona Desaparecida</h1>
-    {{ Form::open( ['route' => 'seenPeople.store'] ) }}
+    {{ Form::open( ['route' => 'seenPeople.store',  'files' => true] ) }}
     <div class="col-md-4">
 
         {{Form::select('type', array('success' => 'Encontrado', 'primary' => 'Visto'), 'primary',array('data-toggle'=>'select','class'=>'form-control select select-default'))}}
@@ -50,6 +50,8 @@
         <div clas="form-group">
             {{ Form::input('hidden','losts_id',$_GET['id'],array('class'=>'form-control')) }}
         </div>
+            <label>¿Tienes alguna fotografia?</label>
+            {{ Form::file('image') }}
         <div class="form-group">
             {{Form::label('fileselect', 'Añadir fotos: (Maximo X MB)')}}
             {{Form::input('file','fileselect','null',array('class'=>'form-control','multiple'))}}

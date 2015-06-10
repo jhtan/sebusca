@@ -165,14 +165,17 @@
                         </div>
                     </article>
                     <!--image Photos-->
-                    <article class="panel panel-default panel-outline">
-                        <div class="panel-heading icon">
-                            <i class="fa fa-picture-o"></i>
-                        </div>
-                        <div class="panel-body">
-                            <img src="{{asset('images/photo.jpg')}}" alt="photo{{$reports->id}}" class="img-responsive img-rounded">
-                        </div>
-                    </article>
+                @if($reports->photo_url!='null')
+                
+                        <article class="panel panel-default panel-outline">
+                            <div class="panel-heading icon">
+                                <i class="fa fa-picture-o"></i>
+                            </div>
+                            <div class="panel-body">
+                                <img src="{{'/'. $reports->photo_url}}" alt="photo{{$reports->id}}" class="img-responsive img-rounded">
+                            </div>
+                        </article>
+                @endif
                     <!--/image Photos-->
                     <!--image Maps-->
                     <article class="panel panel-default panel-outline">

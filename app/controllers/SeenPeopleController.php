@@ -40,8 +40,28 @@ class SeenPeopleController extends \BaseController {
         $seen_people->losts_id=Input::get('losts_id');
         $seen_people->description=Input::get('description');
         $seen_people->type=Input::get('type');
+
+        // The name of the file is created in this way to avoid repetitions.
+        // user_id + claim_id + timestamp
+
+        // The place where the image will be saved and their public url.
+        $claimsImagesPublicUrl = 'images/';
+        $claimsImagesFolder = public_path() . '/' . $claimsImagesPublicUrl;
+
+        if(INPUT::HasFile('image')) {
+            $file_name = Auth::id() . $seen_people->id . time() . '.' . Input::file('image')->getClientOriginalExtension();
+
+            // Saving the image and updating the Claim object.
+
+            Input::file('image')->move($claimsImagesFolder, $file_name);
+            $seen_people->photo_url = $claimsImagesPublicUrl . $file_name;
+        }else{
+            $seen_people->photo_url='null';
+        }
         $seen_people->save();
+
         $lost = Lost::all();
+
         return View::make('home', ['lost' => $lost]);
 
 
