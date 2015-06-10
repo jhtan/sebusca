@@ -1,5 +1,7 @@
 @extends('layouts.default')
 @section('content')
+    <script src="{{asset('/js/dropzone.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('/css/dropzone.css')}}">
     <style>
         #filedrag
         {
@@ -35,7 +37,7 @@
     </style>
 
     <h1>Reporte de Persona Desaparecida</h1>
-    {{ Form::open( ['route' => 'seenPeople.store',  'files' => true] ) }}
+    {{ Form::open( ['route' => 'seenPeople.store',  'files' => true, 'class'=>'dropzone'] ) }}
     <div class="col-md-4">
 
         {{Form::select('type', array('success' => 'Encontrado', 'primary' => 'Visto'), 'primary',array('data-toggle'=>'select','class'=>'form-control select select-default'))}}
@@ -50,11 +52,10 @@
         <div clas="form-group">
             {{ Form::input('hidden','losts_id',$_GET['id'],array('class'=>'form-control')) }}
         </div>
-            <label>¿Tienes alguna fotografia?</label>
-            {{ Form::file('image') }}
+
         <div class="form-group">
-            {{Form::label('fileselect', 'Añadir fotos: (Maximo X MB)')}}
-            {{Form::input('file','fileselect','null',array('class'=>'form-control','multiple'))}}
+            {{Form::label('image', '¿Tienes alguna fotografia?: (Maximo X MB)')}}
+            <!--{{Form::input('file','image','null',array('class'=>'form-control','multiple'))}}-->
             <div id="filedrag">Arrastra y suelta tus <i class="fa fa-picture-o"></i> aqui!
             </div>
 

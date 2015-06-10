@@ -165,8 +165,7 @@
                         </div>
                     </article>
                     <!--image Photos-->
-                @if($reports->photo_url!='null')
-                
+                @if($reports->photo_url!='null' || $reports->photo_url==null)
                         <article class="panel panel-default panel-outline">
                             <div class="panel-heading icon">
                                 <i class="fa fa-picture-o"></i>

@@ -58,7 +58,7 @@
 		}
 	}
 	function Init() {
-		var fileselect = $id("fileselect"), filedrag = $id("filedrag"), submitbutton = $id("submitbutton");
+		var fileselect = $id("image"), filedrag = $id("filedrag"), submitbutton = $id("submitbutton");
 		fileselect.addEventListener("change", FileSelectHandler, false);
 		var xhr = new XMLHttpRequest();
 		if (xhr.upload) {
