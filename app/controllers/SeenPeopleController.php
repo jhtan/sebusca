@@ -41,6 +41,9 @@ class SeenPeopleController extends \BaseController {
         $seen_people->description=Input::get('description');
         $seen_people->type=Input::get('type');
 
+        $seen_people->latitude=Input::get('lat');
+        $seen_people->longitude=Input::get('lng');
+
         // The name of the file is created in this way to avoid repetitions.
         // user_id + claim_id + timestamp
 

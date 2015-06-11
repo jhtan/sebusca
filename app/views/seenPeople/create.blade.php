@@ -1,7 +1,9 @@
 @extends('layouts.default')
 @section('content')
     <script src="{{asset('/js/dropzone.js')}}"></script>
+
     <link rel="stylesheet" href="{{asset('/css/dropzone.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/leaflet.css')}}">
     <style>
         #filedrag
         {
@@ -62,8 +64,10 @@
         </div>
     </div>
     <div class="col-md-8 well">
-        <h4>YOUR MAP Jhtan</h4>
-        <img src="{{asset('images/EckpQtqgWuA.jpg')}}">
+        <h4>Localizalo en el Mapa</h4>
+        <div id="map" style="width: 600px; height: 400px"></div>
+        {{ Form::input('hidden','lat','',array('id'=>'lat','class'=>'form-control')) }}
+        {{ Form::input('hidden','lng','',array('id'=>'lng','class'=>'form-control')) }}
     </div>
     <div class="col-md-12">
         <div id="messages" class="well">
@@ -73,7 +77,59 @@
         </div>
     </div>
     {{ Form::close() }}
+
     <script type="text/javascript" src="{{asset('js/filedrag.js')}}"></script>
+    <script src="{{asset('/js/leaflet.js')}}"></script>
+    <script>
+        //var coordinates = document.getElementById('coordinates');
+        var map = L.map('map').setView([-16.503002, -68.129139], 16);
+        L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            id: 'examples.map-i875mjb7'
+        }).addTo(map);
+
+        var marker =L.marker([-16.503002, -68.129139],{draggable: true}).addTo(map)
+                .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+
+        L.circle([-16.503002, -68.129139], 50, {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5
+        }).addTo(map).bindPopup("I am a circle.");
+
+        L.polygon([
+            [51.509, -0.08],
+            [51.503, -0.06],
+            [51.51, -0.047]
+        ]).addTo(map).bindPopup("I am a polygon.");
+
+
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                    .setLatLng(e.latlng)
+                    .setContent("You clicked the map at " + e.latlng.toString())
+                    .openOn(map);
+            console.log(e.latlng.toString());
+            var x=e.latlng;
+            L.marker([x.lat, x.lng], {draggable:true}).addTo(map);
+        }
+
+        //map.on('click', onMapClick);
+        marker.on('dragend', ondragend);
+        // Set the initial marker coordinate on load.
+        ondragend();
+        function ondragend() {
+            var m = marker.getLatLng();
+            //coordinates.innerHTML = 'Latitude: ' + m.lat + '<br />Longitude: ' + m.lng;
+            document.getElementById('lat').value=(m.lat);
+            document.getElementById('lng').value=(m.lng);
+        }
+    </script>
     <script>
 
         $('#file').on('change',function(){
@@ -84,3 +140,4 @@
         });
     </script>
 @stop
+

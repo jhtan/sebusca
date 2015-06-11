@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+    <link rel="stylesheet" href="{{asset('css/leaflet.css')}}">
     <style>
         .timeline {
             position: relative;
@@ -182,14 +183,34 @@
                             <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="panel-body">
-                            <img src="{{asset('images/map.jpg')}}" alt="map{{$reports->id}}" class="img-responsive img-rounded">
+                            <div id="map" style="width: 600px; height: 400px"></div>
+                            <script src="{{asset('/js/leaflet.js')}}"></script>
+                            <script>
+                                //var coordinates = document.getElementById('coordinates');
+                                var map = L.map('map').setView([{{$reports->latitude}}, {{$reports->longitude}}], 16);
+                                L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+                                    maxZoom: 18,
+                                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                                    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                                    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                                    id: 'examples.map-i875mjb7'
+                                }).addTo(map);
+                                var marker =L.marker([{{$reports->latitude}}, {{$reports->longitude}}]).addTo(map)
+                                        .bindPopup("<b>Descripcion</b><br />{{$reports->description}}").openPopup();
+                                L.circle([{{$reports->latitude}}, {{$reports->longitude}}], 50, {
+                                    color: 'red',
+                                    fillColor: '#f03',
+                                    fillOpacity: 0.5
+                                }).addTo(map).bindPopup("I am a circle.");
+
+                                var popup = L.popup();
+                            </script>
                         </div>
                     </article>
                     <!--/image Maps-->
                     <!--/report>-->
                 @endif
             @endforeach
-
             <article class="panel panel-info panel-outline">
                 <div class="panel-heading icon">
                     <i class="fa fa-info"></i>
