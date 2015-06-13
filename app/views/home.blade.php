@@ -3,7 +3,7 @@
     <div class="row">
                 <a href="/lost/create" class="btn btn-primary btn-lg homeButton">Reportar Desaparecido</a>
                 <a href="javascript:void(0)" class="btn btn-primary btn-lg homeButton">Reportar Persona Vista</a>
-                <a href="javascript:void(0)" class="btn btn-primary btn-lg homeButton">Mapa de Desaparecidos</a>
+                <a href="/map" class="btn btn-primary btn-lg homeButton">Mapa de Desaparecidos</a>
         </div>
     </div>
     </header>
@@ -63,8 +63,8 @@
                                 <div class="loader"></div>
                                 <div class="category">State <i class="fa fa-check"></i></div>
                                 <div class="meta meta--preview">
-                                    <img class="meta__avatar" src="{{asset('images/walt_missing_poster.jpg')}}" alt="{{$lost_people->id}}" />
-                                    <span class="meta__date"><i class="fa fa-calendar-o"></i> {{$lost_people->missing_since}}</span>
+                                    <img class="meta__avatar" src="{{$lost_people->photo_url}}" alt="{{$lost_people->id}}" />
+                                    <span class="meta__date"><i class="fa fa-calendar-o"></i> {{$lost_people->missing_sincedate}}</span>
                                     <span class="meta__reading-time"><i class="fa fa-clock-o"></i> <span class="missing_time">33  min lost</span></span>
                                     <br>
                                     <span class="meta__date"><i class="fa fa-arrows-v"></i> <span class="height">{{$lost_people->height}}</span></span>

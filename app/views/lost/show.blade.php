@@ -53,7 +53,7 @@
         <h1 class="missingTitle">MISSING</h1>
         <div class="content">
             <div class="thumbnail">
-                <img src="{{asset('images/walt_missing_poster.jpg')}}" alt="Missing" class="missingImg">
+                <img src="/{{$lost->photo_url}}" alt="Missing" class="missingImg">
             </div>
             <h3>{{$lost->name}} {{$lost->last_name}}</h3>
             <h4>Missing Since: dd mmm yyyy</h4>

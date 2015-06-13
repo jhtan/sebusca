@@ -107,4 +107,5 @@ Route::get('admin', function () {
 })->before('auth');
 
 Route::resource('seenPeople', 'SeenPeopleController' );
+Route::resource('map', 'MapController' );
 

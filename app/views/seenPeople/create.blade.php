@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-    <script src="{{asset('/js/dropzone.js')}}"></script>
+<!--    <script src="{{asset('/js/dropzone.js')}}"></script>-->
 
     <link rel="stylesheet" href="{{asset('/css/dropzone.css')}}">
     <link rel="stylesheet" href="{{asset('/css/leaflet.css')}}">
@@ -39,10 +39,11 @@
     </style>
 
     <h1>Reporte de Persona Desaparecida</h1>
-    {{ Form::open( ['route' => 'seenPeople.store',  'files' => true, 'class'=>'dropzone'] ) }}
+    {{ Form::open( ['route' => 'seenPeople.store',  'files' => true] ) }}
+    <!--{{ Form::open( ['route' => 'seenPeople.store',  'files' => true, 'class'=>'dropzone'] ) }}-->
     <div class="col-md-4">
 
-        {{Form::select('type', array('success' => 'Encontrado', 'primary' => 'Visto'), 'primary',array('data-toggle'=>'select','class'=>'form-control select select-default'))}}
+        <!--{{Form::select('type', array('success' => 'Encontrado', 'primary' => 'Visto'), 'primary',array('data-toggle'=>'select','class'=>'form-control select select-default'))}}-->
         <!--<div class="form-group">
             {{ Form::label('date', 'Fecha del reporte:') }}
             {{ Form::input('text','date',null,array('placeholder'=>'En caso de ser hoydia el reporte dejarlo en blanco','class'=>'form-control')) }}
@@ -54,13 +55,9 @@
         <div clas="form-group">
             {{ Form::input('hidden','losts_id',$_GET['id'],array('class'=>'form-control')) }}
         </div>
-
         <div class="form-group">
             {{Form::label('image', '¿Tienes alguna fotografia?: (Maximo X MB)')}}
-            <!--{{Form::input('file','image','null',array('class'=>'form-control','multiple'))}}-->
-            <div id="filedrag">Arrastra y suelta tus <i class="fa fa-picture-o"></i> aqui!
-            </div>
-
+            {{Form::input('file','image','null',array('class'=>'form-control','multiple'))}}
         </div>
     </div>
     <div class="col-md-8 well">
@@ -83,7 +80,7 @@
     <script>
         //var coordinates = document.getElementById('coordinates');
         var map = L.map('map').setView([-16.503002, -68.129139], 16);
-        L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
             '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -93,19 +90,6 @@
 
         var marker =L.marker([-16.503002, -68.129139],{draggable: true}).addTo(map)
                 .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-
-        L.circle([-16.503002, -68.129139], 50, {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5
-        }).addTo(map).bindPopup("I am a circle.");
-
-        L.polygon([
-            [51.509, -0.08],
-            [51.503, -0.06],
-            [51.51, -0.047]
-        ]).addTo(map).bindPopup("I am a polygon.");
-
 
         var popup = L.popup();
 
@@ -132,12 +116,10 @@
     </script>
     <script>
 
-        $('#file').on('change',function(){
-            alert("hola");
-        });
         $(document).ready(function() {
             $('select[name="type"]').select2({dropdownCssClass: 'select-inverse-dropdown'});
         });
     </script>
 @stop
+
 

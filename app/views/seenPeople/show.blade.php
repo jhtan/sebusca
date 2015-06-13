@@ -138,7 +138,7 @@
                 </div>
             </article>
             </a>
-
+            <script src="{{asset('/js/leaflet.js')}}"></script>
             @foreach ($seenPeople as $reports)
                 @if($reports->losts_id==$_GET['id'])
                     <!--report-->
@@ -183,11 +183,11 @@
                             <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="panel-body">
-                            <div id="map" style="width: 600px; height: 400px"></div>
-                            <script src="{{asset('/js/leaflet.js')}}"></script>
+                            <div id="map{{$reports->id}}" style="width: 600px; height: 400px"></div>
+
                             <script>
                                 //var coordinates = document.getElementById('coordinates');
-                                var map = L.map('map').setView([{{$reports->latitude}}, {{$reports->longitude}}], 16);
+                                var map = L.map('map{{$reports->id}}').setView([{{$reports->latitude}}, {{$reports->longitude}}], 16);
                                 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
                                     maxZoom: 18,
                                     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -197,11 +197,6 @@
                                 }).addTo(map);
                                 var marker =L.marker([{{$reports->latitude}}, {{$reports->longitude}}]).addTo(map)
                                         .bindPopup("<b>Descripcion</b><br />{{$reports->description}}").openPopup();
-                                L.circle([{{$reports->latitude}}, {{$reports->longitude}}], 50, {
-                                    color: 'red',
-                                    fillColor: '#f03',
-                                    fillOpacity: 0.5
-                                }).addTo(map).bindPopup("I am a circle.");
 
                                 var popup = L.popup();
                             </script>

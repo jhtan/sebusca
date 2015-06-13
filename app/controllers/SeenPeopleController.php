@@ -39,30 +39,18 @@ class SeenPeopleController extends \BaseController {
         $seen_people->user_id=Auth::id();
         $seen_people->losts_id=Input::get('losts_id');
         $seen_people->description=Input::get('description');
-        $seen_people->type=Input::get('type');
-
+        $seen_people->type='visto';
         $seen_people->latitude=Input::get('lat');
         $seen_people->longitude=Input::get('lng');
-
-        // The name of the file is created in this way to avoid repetitions.
-        // user_id + claim_id + timestamp
-
         // The place where the image will be saved and their public url.
         $claimsImagesPublicUrl = 'images/';
         $claimsImagesFolder = public_path() . '/' . $claimsImagesPublicUrl;
-
-        if(INPUT::HasFile('file')) {
-            $file_name = Auth::id() . $seen_people->id . time() . '.' . Input::file('file')->getClientOriginalExtension();
+        if(INPUT::HasFile('image')) {
+            // The name of the file is created in this way to avoid repetitions.
+            // user_id + claim_id + timestamp
+            $file_name = Auth::id() . $seen_people->id . time() . '.' . Input::file('image')->getClientOriginalExtension();
             // Saving the image and updating the Claim object.
-            //Input::file('file')->move($claimsImagesFolder, $file_name);
-            $seen_people->photo_url = $claimsImagesPublicUrl . $file_name;
-        }else{
-            $seen_people->photo_url='null';
-        }
-        if(INPUT::HasFile('file')) {
-            $file_name = Auth::id() . $seen_people->id . time() . '.' . Input::file('file')->getClientOriginalExtension();
-            // Saving the image and updating the Claim object.
-            //Input::file('file')->move($claimsImagesFolder, $file_name);
+            Input::file('image')->move($claimsImagesFolder, $file_name);
             $seen_people->photo_url = $claimsImagesPublicUrl . $file_name;
         }else{
             $seen_people->photo_url='null';

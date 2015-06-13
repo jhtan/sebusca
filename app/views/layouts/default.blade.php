@@ -43,9 +43,6 @@
 <!-- Begin Header -->
 <header class="masthead">
     <div class="container">
-
-
-
         <nav class="navbar navbar-inverse navbar-lg navbar-embossed" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -56,7 +53,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class=" navbar-brand grid___item color-4">
-                    <a class="link link--kumya" href="/"><span data-letters="Se Busca">Se Busca</span>
+                    <a class="link link--kumya" href="/" title="Inicio"><span data-letters="Se Busca">Se Busca</span>
                     </a>
                 </div>
             </div>
@@ -77,6 +74,7 @@
                     {{Form::close() }}
 
                 @else
+                    <!--
                     <ul class="nav navbar-nav">
                         <li><a href="#">Messages<span class="navbar-unread">1</span></a></li>
                         <li ><a href="#">About Us</a></li>
@@ -91,24 +89,21 @@
                 </span>
                             </div>
                         </div>
-                    </form>
+                    </form>-->
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">User {{Auth::user()->username}}   Options <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opciones para el usuario {{Auth::user()->username}} <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">Editar Datos</a></li>
                                 <li class="divider"></li>
-                                <li><a href="/logout">Logout</a></li>
+                                <li><a href="/logout">Salir</a></li>
                             </ul>
-                        <li><a href="#"><span class="visible-sm visible-xs">Settings<span class="fui-gear"></span></span><span class="visible-md visible-lg"><span class="fui-gear"></span></span></a></li>
+                        <!--<li><a href="#"><span class="visible-sm visible-xs">Settings<span class="fui-gear"></span></span><span class="visible-md visible-lg"><span class="fui-gear"></span></span></a></li>-->
                     </ul>
                 @endif
             </div><!--/.navbar-collapse -->
         </div>
     </nav>
-
     @yield('content')
 </body>
 </html>
