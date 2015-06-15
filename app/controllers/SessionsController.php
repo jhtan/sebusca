@@ -16,7 +16,10 @@ class SessionsController extends BaseController {
   public function store() {
     if (Auth::attempt(Input::only('email', 'password'))) {
       $lost = Lost::all();
-      return View::make('home', ['lost' => $lost]);
+        $state = new State();
+        $state = State::all();
+        return View::make('home', ['lost' => $lost, 'state' => $state]);
+
     }
 
     return Redirect::back()->withInput();
@@ -25,6 +28,9 @@ class SessionsController extends BaseController {
   public function destroy() {
     Auth::logout();
     $lost = Lost::all();
-    return View::make('home', ['lost' => $lost]);
+    $state = new State();
+    $state = State::all();
+     return View::make('home', ['lost' => $lost, 'state' => $state]);
+
   }
 }

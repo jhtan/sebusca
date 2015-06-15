@@ -16,9 +16,12 @@ class HomeController extends BaseController {
 	*/
 
 	public function showWelcome()
-	{
-    $lost = Lost::all();
-    return View::make('home', ['lost' => $lost]);
+    {
+        $lost = Lost::all();
+        $state = new State();
+        $state = State::all();
+        return View::make('home', ['lost' => $lost, 'state' => $state]);
+
 //		return View::make('hello');
 	}
 

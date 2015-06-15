@@ -39,12 +39,13 @@ class UsersController extends \BaseController {
 	public function store()
 	{
     $input = Input::all();
-
     if(!$this->user->fill($input)->isValid()) {
       return Redirect::back()->withInput()->withErrors($this->user->errors);
     }
 
     $this->user->password = Hash::make($this->user->password);
+    $this->user->isAdmin=false;
+
     $this->user->save();
 
 //    $user = new User;

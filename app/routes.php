@@ -95,8 +95,11 @@ Route::get('register', 'UsersController@create');
 Route::resource('sessions', 'SessionsController');
 
 Route::get('/', function () {
+    $state = new State();
+    $state = State::all();
+
   $lost = Lost::all();
-  return View::make('home', ['lost' => $lost]);
+    return View::make('home', ['lost' => $lost, 'state' => $state]);
 });
 
 Route::resource('users', 'UsersController');
@@ -107,5 +110,6 @@ Route::get('admin', function () {
 })->before('auth');
 
 Route::resource('seenPeople', 'SeenPeopleController' );
+Route::resource('state', 'StateController' );
 Route::resource('map', 'MapController' );
 

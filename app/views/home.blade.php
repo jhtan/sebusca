@@ -44,28 +44,39 @@
                     <li class="filter"><a class="selected" href="#0" data-sort-value="original-order">original order</a></li>
                     <li class="filter"><a href="#0" data-sort-value="name">Nombre</a></li>
                     <li class="filter"><a href="#0" data-sort-value="last_name">Apellido</a></li>
-                    <li class="filter"><a href="#0" data-sort-value="height">Height</a></li>
+                    <li class="filter"><a href="#0" data-sort-value="missing_since">Fecha de Desaparición</a></li>
+                    <!--<li class="filter"><a href="#0" data-sort-value="height">Height</a></li>
                     <li class="filter"><a href="#0" data-sort-value="weight">Weight</a></li>
-                    <li class="filter"><a href="#0" data-sort-value="date">Fecha</a></li>
+                    <li class="filter"><a href="#0" data-sort-value="date">Fecha</a></li>-->
                 </ul>
                 <!-- cd-filters -->
             </div>
             <!-- cd-tab-filter -->
         </div>
         <!-- cd-tab-filter-wrapper -->
+
         <div class="container">
             <div class="row">
                 <section class="grid_Thum">
                     @if($lost->count())
                         @foreach($lost as $lost_people)
-                            <a href="/lost/{{$lost_people->id}}" class="grid__item">
+                            {{$sw=false}}
+                            @if($state->count())
+                            @foreach($state as $st)
+                                @if($st->losts_id==$lost_people->id)
+                                    {{$sw=true}}
+                                @endif
+                            @endforeach
+                            @endif
+                        @if(!$sw)
+                                <a href="/lost/{{$lost_people->id}}" class="grid__item">
                                 <h2 class="title_Thum title--preview name">{{$lost_people->name}}&nbsp;<span class="last_name">{{$lost_people->last_name}}</span></h2>
                                 <div class="loader"></div>
-                                <div class="category">State <i class="fa fa-check"></i></div>
+                                <!--<div class="category">State <i class="fa fa-check"></i></div>-->
                                 <div class="meta meta--preview">
                                     <img class="meta__avatar" src="{{$lost_people->photo_url}}" alt="{{$lost_people->id}}" />
-                                    <span class="meta__date"><i class="fa fa-calendar-o"></i> {{$lost_people->missing_sincedate}}</span>
-                                    <span class="meta__reading-time"><i class="fa fa-clock-o"></i> <span class="missing_time">33  min lost</span></span>
+                                    <span class="meta__date missing_since"><i class="fa fa-calendar-o"></i> {{$lost_people->missing_sincedate}}</span>
+                                    <!--<span class="meta__reading-time"><i class="fa fa-clock-o"></i> <span class="missing_time">33  min lost</span></span>-->
                                     <br>
                                     <span class="meta__date"><i class="fa fa-arrows-v"></i> <span class="height">{{$lost_people->height}}</span></span>
                                     <span class="meta__reading-time weight"><i class="fa fa-anchor"></i> {{$lost_people->weight}}</span>
@@ -88,6 +99,10 @@
 
                                 </div>
                             </a>
+                            @endif
+
+
+
                                 <!--<div class="thumbnail peopleitem" data-name="{{$lost_people->name}}" data-lastName="{{$lost_people->last_name}}" data-date="{{$lost_people->created_at}}"><a href="/lost/{{$lost_people->id}}"></div>-->
                          @endforeach
 

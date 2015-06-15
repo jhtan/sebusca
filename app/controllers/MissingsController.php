@@ -48,6 +48,7 @@ class MissingsController extends \BaseController {
         $lost->description = Input::get('description');
         $lost->latitude = Input::get('lat');
         $lost->longitude = Input::get('lng');
+        $lost->contact_number= Input::get('contact_number');
         $lost->city_id = 1;
         $lost->country_id = 1;
         $lost->user_id = Auth::id();
@@ -71,7 +72,9 @@ class MissingsController extends \BaseController {
         $lost->save();
 
         $lost = Lost::all();
-        return View::make('home', ['lost' => $lost]);
+        $state = new State();
+        $state = State::all();
+        return View::make('home', ['lost' => $lost, 'state' => $state]);
 
     //    $user = new User;
 //    $user->username = Input::get('username');
@@ -89,7 +92,8 @@ class MissingsController extends \BaseController {
 	 */
 	public function show($id)	{
         $lost = Lost::find($id);
-        return View::make('lost.show', ['lost' => $lost]);
+        $user =User::All();
+        return View::make('lost.show', ['lost' => $lost, 'user' => $user]);
 	}
 
 

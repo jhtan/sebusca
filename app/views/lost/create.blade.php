@@ -378,8 +378,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    {{ Form::label('nationality', 'Nacionalidad:')}}
-                                    {{ Form::input('text', 'nationality', null, array('class'=>'form-control')) }}
+                                    {{ Form::label('contact_number', 'Numero de Contacto:')}}
+                                    {{ Form::input('text', 'contact_number', null, array('class'=>'form-control')) }}
                                 </div>
 
                                 <div class="form-group">

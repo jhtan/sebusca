@@ -57,7 +57,10 @@ class SeenPeopleController extends \BaseController {
         }
         $seen_people->save();
         $lost = Lost::all();
-        return View::make('home', ['lost' => $lost]);
+        $state = new State();
+        $state = State::all();
+        return View::make('home', ['lost' => $lost, 'state' => $state]);
+
 
 
 	}
