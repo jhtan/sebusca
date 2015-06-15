@@ -19,7 +19,7 @@
             last_name: '.last_name',
             height: '.height',
             weight: '.weight',
-            date: '.date'
+            missing_since: '.missing_since'
         }
     });
         var filterFns = {
